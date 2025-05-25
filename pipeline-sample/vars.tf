@@ -8,7 +8,10 @@ variable "tags" {
   
 }
 }
-
+variable "subscription_id" {
+  description = "The subscription ID to use for the provider"
+  type        = string
+}
 variable "rg_name" {
   description = "The name of the resource group"
   type        = string
