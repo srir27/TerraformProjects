@@ -16,7 +16,7 @@ trigger:
       - 03-Project/**
       - 04-Project/**
 pool:
-  name: self-hosted
+  vmImage: 'ubuntu-latest'
 
 stages:
   - stage: validate
