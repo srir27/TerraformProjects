@@ -10,9 +10,14 @@ trigger:
   paths:
     include:
     - TerraformProjects/pipeline-sample/*
-    exclude:
-      - TerraformProjects/*
 
+resources:
+  repositories:
+    - repository: self
+      type: github
+      name: srir27/TerraformProjects
+      ref: refs/heads/main
+      
 pool:
   vmImage: ubuntu-latest
 
