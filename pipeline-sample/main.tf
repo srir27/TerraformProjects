@@ -1,10 +1,11 @@
 module "network" {
-  source = "./modules/network"
-
-  vnet_name     = module.network.vnet_name
+  source        = "./modules/network"
+  rg_name       = azurerm_resource_group.rg1.name
+  location      = azurerm_resource_group.rg1.location
+  vnet_name     = var.vnet_name
   tags          = var.tags
-  address_space = module.network.address_space
-  subnet_name   = module.network.subnet_name
-  snet_space    = module.network.snet_space
-  
+  address_space = var.address_space
+  subnet_name   = var.subnet_name
+  snet_space    = var.snet_space
+
 }

@@ -1,6 +1,6 @@
 # Credentials
-credentials.sh
-creds.sh
+credentials.*
+creds.*
 
 # Local .terraform directories
 **/.terraform/*

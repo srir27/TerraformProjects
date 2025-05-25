@@ -1,13 +1,16 @@
+variable "tags" {}
+variable "rg_name" {
+  type     = string
+  nullable = false
+}
+variable "location" {
+  type     = string
+  nullable = false
+}
 variable "vnet_name" {
   description = "The name of the virtual network"
   type        = string
   default     = "tf-vnet"
-}
-
-variable "tags" {
-  description = "The name of the virtual network"
-  type        = map(string)
-  
 }
 variable "address_space" {
   description = "The address space for the virtual network"
