@@ -16,7 +16,7 @@ trigger:
       - 03-Project/**
       - 04-Project/**
 pool:
-  vmImage: self-hosted
+  name: self-hosted
 
 stages:
   - stage: validate
@@ -46,6 +46,7 @@ stages:
               backendAzureRmContainerName: 'tf-backend'
               backendAzureRmKey: 'devstatefile.tfstate'
   - stage: deployment
+    condition: succeeded()
     jobs:
       - job: tf_plan
         steps:
