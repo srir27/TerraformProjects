@@ -19,7 +19,7 @@ resources:
       ref: refs/heads/main
       
 pool:
-  vmImage: Azure Pipelines
+  name: self-hosted
 
 stages:
   - stage: validate
