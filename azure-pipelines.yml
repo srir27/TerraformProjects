@@ -23,18 +23,17 @@ resources:
       type: github
       name: srir27/TerraformProjects
       ref: refs/heads/main
-steps:
-  - checkout: self
-    fetchDepth: 0
       
 pool:
   name: self-hosted
 
-  stages:
+stages:
   - stage: validate
     jobs:
       - job: tf_validate
         steps:
+        - checkout: self
+          fetchDepth: 0
         - task: TerraformInstaller@1
           inputs:
             terraformVersion: 1.11.0
@@ -53,6 +52,8 @@ pool:
     jobs:
       - job: tf_deploy
         steps:
+        - checkout: self
+          fetchDepth: 0
         - task: TerraformInstaller@1
           inputs:
             terraformVersion: 1.11.0
