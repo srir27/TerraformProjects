@@ -19,7 +19,7 @@ resources:
       ref: refs/heads/main
       
 pool:
-  vmImage: ubuntu-latest
+  vmImage: Azure Pipelines
 
 stages:
   - stage: validate
