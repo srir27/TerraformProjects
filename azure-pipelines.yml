@@ -40,6 +40,7 @@ stages:
               backendAzureRmStorageAccountName: 'tfazbackendstore2709'
               backendAzureRmContainerName: 'tf-backend'
               backendAzureRmKey: 'devstatefile.tfstate'
+              
 
       - job: ValidateJob
         dependsOn: InitJob
