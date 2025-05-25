@@ -27,6 +27,7 @@ stages:
             inputs:
               terraformVersion: '1.6.6'
       - job: tf_init
+        condition: succeeded()
         steps:
           - task: TerraformTask@5
             inputs:
@@ -39,6 +40,7 @@ stages:
               backendAzureRmContainerName: 'tf-backend'
               backendAzureRmKey: 'devstatefile.tfstate'
       - job: tf_validate
+        condition: succeeded()
         steps:
           - task: TerraformTask@5
             inputs:
