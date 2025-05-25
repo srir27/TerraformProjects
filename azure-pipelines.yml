@@ -9,7 +9,13 @@ trigger:
     - main
   paths:
     include:
-    - TerraformProjects/pipeline-sample/*
+    - pipeline-sample/**
+    exclude: 
+    - 01-Project/**
+    - 02-Project/**
+    - 03-Project/**
+    - 04-Project/**
+      
 
 resources:
   repositories:
