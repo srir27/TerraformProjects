@@ -23,11 +23,14 @@ resources:
       type: github
       name: srir27/TerraformProjects
       ref: refs/heads/main
+steps:
+  - checkout: self
+    fetchDepth: 0
       
 pool:
   name: self-hosted
 
-stages:
+  stages:
   - stage: validate
     jobs:
       - job: tf_validate
@@ -48,7 +51,7 @@ stages:
   - stage: Deploy
     condition: succeeded()
     jobs:
-      - job: tf_validate
+      - job: tf_deploy
         steps:
         - task: TerraformInstaller@1
           inputs:
