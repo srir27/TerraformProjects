@@ -25,7 +25,7 @@ stages:
         steps:
           - task: TerraformInstaller@1
             inputs:
-              terraformVersion: '1.11.0'
+              terraformVersion: '1.6.6'
       - job: tf_init
         steps:
           - task: TerraformTask@5
@@ -33,7 +33,7 @@ stages:
               provider: 'azurerm'
               command: 'init'
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample'
-              backendServiceArm: 'PAID Monthly(9a11755d-a926-4ef7-b329-2f1a3dc2e9c5)'
+              backendServiceArm: 'Az-AzDevOps'
               backendAzureRmResourceGroupName: 'tf-backend-rg'
               backendAzureRmStorageAccountName: 'tfazbackendstore2709'
               backendAzureRmContainerName: 'tf-backend'
@@ -57,7 +57,7 @@ stages:
               command: 'plan'
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample'
               commandOptions: '-var-file="vars.tfvars"'
-              environmentServiceNameAzureRM: 'PAID Monthly(9a11755d-a926-4ef7-b329-2f1a3dc2e9c5)'
+              environmentServiceNameAzureRM: 'Az-AzDevOps'
       - job: tf_apply
         steps:
         - task: TerraformTask@5
@@ -65,6 +65,6 @@ stages:
             provider: 'azurerm'
             command: 'apply'
             workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample'
-            environmentServiceNameAzureRM: 'PAID Monthly(9a11755d-a926-4ef7-b329-2f1a3dc2e9c5)'
+            environmentServiceNameAzureRM: 'Az-AzDevOps'
 
           
