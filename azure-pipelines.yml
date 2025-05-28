@@ -30,7 +30,7 @@ stages:
               backendAzureRmStorageAccountName: 'tfazbackendstore2709'
               backendAzureRmContainerName: 'tf-backend'
               backendAzureRmKey: 'statefile.tfstate'
-              backendAzureRmUseEntraIdForAuthentication: true
+              backendAzureRmUseEntraIdForAuthentication: false
           - task: TerraformTask@5
             inputs:
               provider: 'azurerm'
@@ -47,7 +47,7 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
               commandOptions: '-var-file="vars.tfvars"'
               environmentServiceNameAzureRM: 'az-ado-identity'
-              backendAzureRmUseEntraIdForAuthentication: true
+              backendAzureRmUseEntraIdForAuthentication: false
           - task: TerraformTask@5 # terraform apply
             inputs:
               provider: 'azurerm'
@@ -55,4 +55,4 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
               commandOptions: '-var-file="vars.tfvars" -auto-approve'
               environmentServiceNameAzureRM: 'az-ado-identity'
-              backendAzureRmUseEntraIdForAuthentication: true
+              backendAzureRmUseEntraIdForAuthentication: false
