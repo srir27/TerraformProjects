@@ -25,7 +25,7 @@ stages:
               provider: 'azurerm'
               command: 'init'
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
-              backendServiceArm: 'adomanagedidentity'
+              backendServiceArm: 'az-ado-identity'
               backendAzureRmResourceGroupName: 'tf-backend-rg'
               backendAzureRmStorageAccountName: 'tfazbackendstore2709'
               backendAzureRmContainerName: 'tf-backend'
@@ -44,11 +44,11 @@ stages:
               command: 'plan'
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
               commandOptions: '-var-file="vars.tfvars"'
-              environmentServiceNameAzureRM: 'adomanagedidentity'
+              environmentServiceNameAzureRM: 'az-ado-identity'
           - task: TerraformTask@5 # terraform apply
             inputs:
               provider: 'azurerm'
               command: 'apply'
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
               commandOptions: '-var-file="vars.tfvars" -auto-approve'
-              environmentServiceNameAzureRM: 'adomanagedidentity'
+              environmentServiceNameAzureRM: 'az-ado-identity'
