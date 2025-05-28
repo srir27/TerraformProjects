@@ -15,7 +15,7 @@ pool:
 stages:
   - stage: validate
     jobs:
-      - job: terraform_deploy
+      - job: terraform_destroy
         steps:
           - task: TerraformInstaller@1 # installs terraform
             inputs:
