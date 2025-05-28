@@ -48,6 +48,7 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
               commandOptions: '-var-file="vars.tfvars"'
               environmentServiceNameAzureRM: 'az-ado-identity'
+              backendAzureRmUseEntraIdForAuthentication: false
           - task: TerraformTask@5 # terraform apply
             inputs:
               provider: 'azurerm'
@@ -55,3 +56,4 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
               commandOptions: '-var-file="vars.tfvars" -auto-approve'
               environmentServiceNameAzureRM: 'az-ado-identity'
+              backendAzureRmUseEntraIdForAuthentication: false
