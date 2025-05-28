@@ -4,6 +4,6 @@ terraform {
     storage_account_name = "tfazbackendstore2709"
     container_name       = "tf-backend"
     key                  = "statefile.tfstate"
-
+    use_azuread_auth = false
   }
 }
