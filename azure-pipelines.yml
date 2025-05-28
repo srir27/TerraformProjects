@@ -36,8 +36,7 @@ stages:
               provider: 'azurerm'
               command: 'validate'
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
-  - stage: deploy
-    jobs:             
+                        
       - job: terraform_deploy
         steps:
           - task: TerraformTask@5 # terraform plan
