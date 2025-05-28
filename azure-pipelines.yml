@@ -15,7 +15,7 @@ pool:
 stages:
   - stage: validate
     jobs:
-      - job: terraform_validate
+      - job: terraform_deploy
         steps:
           - task: TerraformInstaller@1 # installs terraform
             inputs:
@@ -31,15 +31,12 @@ stages:
               backendAzureRmContainerName: 'tf-backend'
               backendAzureRmKey: 'statefile.tfstate'
               backendAzureRmUseEntraIdForAuthentication: false
-          - task: TerraformTask@5
+          - task: TerraformTask@5 # terraform validate
             inputs:
               provider: 'azurerm'
               command: 'validate'
               workingDirectory: '$(System.DefaultWorkingDirectory)/pipeline-sample/'
-                        
-      - job: terraform_deploy
-        dependsOn: terraform_validate
-        steps:
+                    
           - task: TerraformTask@5 # terraform plan
             inputs:
               provider: 'azurerm'
@@ -48,6 +45,7 @@ stages:
               commandOptions: '-var-file="vars.tfvars"'
               environmentServiceNameAzureRM: 'az-ado-identity'
               backendAzureRmUseEntraIdForAuthentication: false
+              
           - task: TerraformTask@5 # terraform apply
             inputs:
               provider: 'azurerm'
